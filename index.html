@@ -110,18 +110,17 @@
         font-size: 16px;
         margin: 4px 2px;
         cursor: pointer;
-        transition: transform 0.5s ease; /* Aggiunto un effetto di transizione per rendere più fluida l'animazione */
+        transition: transform 0.5ms ease; /* Aggiunto un effetto di transizione per rendere più fluida l'animazione */
     }
     .cookieR:hover {
         background-color: #4CAF50;
-        /*translate di un valore casuale*/
-        transform: translate(100px, 100px);
+        transform: translate(-500px, -500px);
     }
 
 </style>
 <body>
 <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #333; color: #fff; padding: 10px; text-align: center; z-index: 100; font-family: 'Tahoma', sans-serif">
-    Questo sito utilizza i cookie per garantire una migliore esperienza di navigazione e una maggiore sicurezza. <a href="cookie.html">Visualizza i nostri partner</a> <button class="cookie" onclick="accettaCookie()">Accetta</button><button class="cookieR" onclick="accettaCookie()">Rifiuta</button>
+    Questo sito utilizza i cookie per garantire una migliore esperienza di navigazione e una maggiore sicurezza. Se rifiuti ci potranno essere delle conseguenze (Considerando 35 GDPD) <a href="cookie.html">Visualizza i nostri partner</a> <button class="cookie" onclick="accettaCookie()">Accetta</button><button class="cookieR" onclick="accettaCookie()">Rifiuta</button>
 </div>
 
 <div class="container">
