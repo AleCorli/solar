@@ -104,9 +104,10 @@
     }
 
     .cookie:hover {
-        background-color: #4CAF50;
+        background-color: green;
         transform: rotateX(182deg);
     }
+
 
     .cookieR {
         background-color: blue;
@@ -119,12 +120,11 @@
         font-size: 16px;
         margin: 4px 2px;
         cursor: pointer;
-        transition: transform 0.5ms ease;
+        transition: background-color 0.1s, transform 0.5s;
     }
 
     .cookieR:hover {
-        background-color: #4CAF50;
-        transform: translate(-500px, -500px);
+        background-color: red;
     }
 
     .date {
@@ -138,7 +138,7 @@
 </style>
 <body>
 <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #333; color: #fff; padding: 10px; text-align: center; z-index: 100; font-family: 'Tahoma', sans-serif">
-    Questo sito utilizza i cookie per garantire una migliore esperienza di navigazione e una maggiore sicurezza. Se rifiuti ci potranno essere delle conseguenze (Considerando 35 GDPR) <a href="cookie.html">Visualizza i nostri partner</a> <button class="cookie" onclick="accettaCookie()">Accetta</button><button class="cookieR" onclick="accettaCookie()">Rifiuta</button>
+    Questo sito utilizza i cookie per garantire una migliore esperienza di navigazione e una maggiore sicurezza. Se rifiuti ci potranno essere delle conseguenze (Considerando 35 GDPR) <a href="cookie.html">Visualizza i nostri partner</a> <button class="cookie" onclick="accettaCookie()">Accetta</button><button class="cookieR" onclick="rifiutaCookie()">Rifiuta</button>
 </div>
 <div class="date">
     <div class="year"></div>
@@ -206,6 +206,28 @@
     function accettaCookie() {
         document.getElementById("cookie-banner").style.display = "none";
     }
+    function rifiutaCookie() {
+        window.close();
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        const button = document.querySelector('.cookieR');
+        let originalTransform = button.style.transform;
+
+        button.addEventListener('mouseover', function () {
+            const maxX = window.innerWidth - button.clientWidth;
+            const maxY = window.innerHeight - button.clientHeight;
+
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            button.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        });
+
+        button.addEventListener('mouseout', function () {
+            button.style.transform = originalTransform;
+        });
+    });
+
 </script>
 </body>
 </html>
