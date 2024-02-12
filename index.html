@@ -88,6 +88,7 @@
         }
 
     }
+    
 
     .cookie {
         background-color: blue;
@@ -135,10 +136,17 @@
         font-family: 'Tahoma', sans-serif;
         color: white;
     }
+    a{
+        text-decoration: none;
+        color: blue;
+    }
+    a:hover {
+        color: red;
+    }
 </style>
 <body>
 <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #333; color: #fff; padding: 10px; text-align: center; z-index: 100; font-family: 'Tahoma', sans-serif">
-    Questo sito utilizza i cookie per garantire una migliore esperienza di navigazione e una maggiore sicurezza. Se rifiuti ci potranno essere delle conseguenze (Considerando 35 GDPR) <a href="cookie.html">Visualizza i nostri partner</a> <button class="cookie" onclick="accettaCookie()">Accetta</button><button class="cookieR" onclick="rifiutaCookie()">Rifiuta</button>
+    Questo sito utilizza i cookie per garantire una migliore esperienza di navigazione e una maggiore sicurezza. Se rifiuti ci potranno essere delle conseguenze (Considerando 35 GDPR) <a href="cookie.html" target="_blank">Visualizza i nostri partner</a> <button class="cookie" onclick="accettaCookie()">Accetta</button><button class="cookieR" onclick="rifiutaCookie()">Rifiuta</button>
 </div>
 <div class="date">
     <div class="year"></div>
