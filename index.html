@@ -8,7 +8,7 @@
 </head>
 <body>
 <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #333; color: #fff; padding: 10px; text-align: center; z-index: 100; font-family: 'Tahoma', sans-serif">
-    Questo sito utilizza i cookie per garantire una migliore esperienza di navigazione e una maggiore sicurezza. Se rifiuti ci potranno essere delle conseguenze (Considerando 35 GDPR) <a href="cookie.html" target="_blank">Visualizza i nostri partner</a> <button class="cookie" onclick="accettaCookie()">Accetta</button><button class="cookieR" onclick="rifiutaCookie()">Rifiuta</button>
+    Questo sito utilizza i cookie per garantire una migliore esperienza di navigazione e una maggiore sicurezza. Se rifiuti ci potranno essere delle conseguenze (Considerando 35 GDPR) <a href="cookie.html" target="_blank">Visualizza i nostri partner</a> <button class="cookie" onclick="checkCookie()">Accetta</button><button class="cookieR" onclick="rifiutaCookie()">Rifiuta</button>
 </div>
 <div class="date">
     <div class="year"></div>
@@ -72,7 +72,39 @@
     setInterval(updateDay, 100);
     setInterval(updateMonth, 3041);
     setInterval(updateDate, 36500);
+    function setCookie(cname,cvalue,exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
 
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+            }
+        }
+    return "";
+    }
+    function checkCookie() {
+        let user = getCookie("username");
+        if (user != "") {
+            alert("Welcome again " + user);
+        } else {
+            user = prompt("Please enter your name:","");
+            if (user != "" && user != null) {
+            setCookie("username", user, 30);
+            }
+        }
+    }
     function accettaCookie() {
         document.getElementById("cookie-banner").style.display = "none";
     }
