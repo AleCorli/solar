@@ -23,6 +23,7 @@
 </div>
 
 <script>
+    let cookieSet = false;
     var year = 2024;
     var month = 1;
     var day = 1;
@@ -98,14 +99,16 @@
         let user = getCookie("username");
         if (user != "") {
             alert("Welcome again " + user);
+            cookieSet = true;
         } else {
             user = prompt("Please enter your name:","");
             if (user != "" && user != null) {
             setCookie("username", user, 30);
             }
         }
+        chiudiCookie();
     }
-    function accettaCookie() {
+    function chiudiCookie() {
         document.getElementById("cookie-banner").style.display = "none";
     }
     function rifiutaCookie() {
@@ -114,6 +117,9 @@
     document.addEventListener('DOMContentLoaded', function () {
         const button = document.querySelector('.cookieR');
         let originalTransform = button.style.transform;
+        if(cookieSet === true){
+            button.style.display = "none";
+        }
 
         button.addEventListener('mouseover', function () {
             const maxX = window.innerWidth - button.clientWidth;
